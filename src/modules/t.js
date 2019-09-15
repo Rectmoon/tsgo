@@ -1,9 +1,21 @@
 console.log(12345)
 
-const iframe = document.createElement('iframe')
-iframe.src = String(window.location)
-document.body.appendChild(iframe)
+let deck = {
+  suits: ['hearts', 'spades', 'clubs', 'diamonds'],
+  cards: Array(52),
+  createCardPicker: function() {
+    return () => {
+      let pickedCard = Math.floor(Math.random() * 52)
+      let pickedSuit = Math.floor(pickedCard / 13)
 
-console.log(iframe.contentWindow.Symbol.for('foo') === Symbol.for('foo'))
+      return { suit: this.suits[pickedSuit], card: pickedCard % 13 }
+    }
+  }
+}
+
+let cardPicker = deck.createCardPicker()
+let pickedCard = cardPicker()
+
+console.log('card: ' + pickedCard.card + ' of ' + pickedCard.suit)
 
 export default {}
