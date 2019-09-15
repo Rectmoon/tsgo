@@ -1,5 +1,7 @@
-const requireAll = context => context.keys().map(context)
+require('./modules/t')
 
-const modules = require.context('./modules', false, /\.js$/)
-
-requireAll(modules)
+if (module.hot) {
+  module.hot.accept(['./modules/t.js'], () => {
+    require('./modules/t.js').default
+  })
+}

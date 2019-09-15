@@ -2,7 +2,7 @@
  * @Author: Rectmoon
  * @Date: 2019-09-08 04:24:43
  * @Last Modified by: Rectmoon
- * @Last Modified time: 2019-09-08 06:04:39
+ * @Last Modified time: 2019-09-16 02:18:48
  */
 
 console.log('boolean>>>')
@@ -108,7 +108,7 @@ console.log(v1)
 
 // null & undefined
 console.log('null & undefined>>>')
-let u: undefined = undefined
+let u: undefined
 let n: null = null
 
 console.log(u)
@@ -122,7 +122,9 @@ const errorFn = (message: string): never => {
 // errorFn('嘿嘿嘿')
 
 const infiniteFn = (): never => {
-  while (true) {}
+  while (true) {
+    console.log(6)
+  }
 }
 
 // object
@@ -134,5 +136,5 @@ console.log(o1)
 console.log('type assertions>>>')
 
 let someValue = 'this is a string'
-console.log((<string>someValue).length)
+console.log((someValue as string).length)
 console.log((someValue as string).length)

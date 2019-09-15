@@ -1,6 +1,8 @@
+const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { name, author, description, version } = require('../package.json')
 
 const baseConfig = require('./webpack.conifg.base')
 const commonOptions = {
@@ -20,14 +22,28 @@ module.exports = webpackMerge(baseConfig, {
   plugins: [
     new CleanWebpackPlugin({
       verbose: true
+    }),
+
+    new webpack.BannerPlugin({
+      banner: [
+        `@project: ${name}`,
+        `@author: ${author}`,
+        `@date: ${new Date()}`,
+        `@description: ${description}`,
+        `@version: ${version}`
+      ].join('\n'),
+      entryOnly: true,
+      exclude: /^(polyfill|manifest)/
     })
   ],
 
   optimization: {
     moduleIds: 'hashed',
+
     runtimeChunk: {
       name: 'manifest'
     },
+
     splitChunks: {
       cacheGroups: {
         default: false,
@@ -46,6 +62,7 @@ module.exports = webpackMerge(baseConfig, {
         }
       }
     },
+
     minimizer: [
       new UglifyJsPlugin({
         sourceMap: true,
