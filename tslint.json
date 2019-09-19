@@ -20,7 +20,8 @@
     "no-empty": false,
     "no-shadowed-variable": false,
     "arrow-parens": false,
-    "prefer-for-of": false
+    "prefer-for-of": false,
+    "max-classes-per-file": false
   },
   "rulesDirectory": []
 }
