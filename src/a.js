@@ -5,8 +5,12 @@
 //     require('./modules/t.js').default
 //   })
 // }
+// import ajax from '@zhulingying/ajax'
 
-console.log(process.env.NODE_ENV)
+const ajax = require('@zhulingying/ajax')
+console.log(ajax)
+// ajax()
+
 if (process.env.NODE_ENV === 'development') {
   console.log('Welcome to development')
 }

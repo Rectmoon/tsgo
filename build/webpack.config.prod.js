@@ -4,7 +4,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { name, author, description, version } = require('../package.json')
 
-const baseConfig = require('./webpack.conifg.base')
+const baseConfig = require('./webpack.config.base')
+const TreePlugin = require('./TreePlugin')
+
 const commonOptions = {
   chunks: 'all',
   reuseExistingChunk: true
@@ -23,6 +25,8 @@ module.exports = webpackMerge(baseConfig, {
     new CleanWebpackPlugin({
       verbose: true
     }),
+
+    new TreePlugin(),
 
     new webpack.BannerPlugin({
       banner: [

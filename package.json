@@ -35,6 +35,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@zhulingying/ajax": "^1.0.6",
+    "@zhulingying/event-handle": "^1.0.6",
     "core-js": "^3.2.1",
     "react": "^16.9.0"
   }
